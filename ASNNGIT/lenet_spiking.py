@@ -60,22 +60,9 @@ class Spike(nn.Module):
 
         self.leakelayers = nn.Parameter(torch.ones([self.layers,self.num_steps]) * 0.5)
         self.inputlayers = nn.Parameter(torch.ones([self.layers,self.num_steps]) * 0.5)
-
-        self.re=nn.Parameter(torch.ones([self.layers,self.num_steps]) )
-
-
-        self.th = nn.Parameter(torch.ones([self.layers, self.num_steps]) )#0.53
+        
         self.lano = nn.LayerNorm(normalized_shape=[3, 32, 32])
         self.sigmoid = nn.Sigmoid()
-
-
-        for m in self.modules():
-            if isinstance(m, nn.Conv2d):
-                m.threshold = 2.0
-                torch.nn.init.xavier_uniform_(m.weight, gain=5)
-            elif isinstance(m, nn.Linear):
-                m.threshold = 2.0
-                torch.nn.init.xavier_uniform_(m.weight, gain=5)
 
     def forward(self, imgs,code,ASNN):
         max = MaxPool2d(2)
