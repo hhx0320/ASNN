@@ -12,3 +12,5 @@ This code uses LeNet to display specific details, and the same modifications can
 
 When performing time encoding, the input data distribution can be transformed using layernorm and sigmoid first,
 Use the 'fenge' function in 'util' to generate a sequence for dividing the input data.
+
+Among them, ASNN also refers to UQTS
